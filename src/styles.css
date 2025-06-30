@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+/* @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css"; */
+/* @font-face {
+font-family: 'Inter', sans-serif;
+src: url('https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTcviYwY.woff2') format('woff2');
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+} */
+
+/* @tailwind base; */
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}

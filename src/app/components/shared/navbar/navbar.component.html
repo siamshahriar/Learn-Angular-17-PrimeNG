@@ -1,0 +1,44 @@
+<!-- Navbar -->
+<nav class="bg-gray-800 shadow-lg sticky top-0 z-50">
+  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+    <!-- Logo -->
+    <a routerLink="/" class="text-white no-underline text-2xl font-bold"
+      >Learn PrimeNG</a
+    >
+
+    <!-- Navbar Links -->
+    <div class="flex space-x-4">
+      <a
+        routerLink="/"
+        routerLinkActive="bg-gray-900 text-white"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        >Form</a
+      >
+      <a
+        routerLink="/button"
+        routerLinkActive="bg-gray-900 text-white"
+        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        >Button</a
+      >
+      <a
+        routerLink="/data"
+        routerLinkActive="bg-gray-900 text-white"
+        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        >Data</a
+      >
+      <a
+        routerLink="/panel"
+        routerLinkActive="bg-gray-900 text-white"
+        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        >Panel</a
+      >
+      <a
+        routerLink="/overlay"
+        routerLinkActive="bg-gray-900 text-white"
+        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        >Overlay</a
+      >
+    </div>
+  </div>
+</nav>

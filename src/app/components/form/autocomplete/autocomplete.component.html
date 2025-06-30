@@ -1,0 +1,13 @@
+<div class="flex gap-4">
+  <p class="">Auto Complete - Reactive Form</p>
+  <form [formGroup]="formGroup">
+    <p-autoComplete
+      formControlName="selectedCountry"
+      [suggestions]="filteredCountries"
+      (completeMethod)="filterCountry($event)"
+      optionLabel="name"
+      [dropdown]="true"
+    />
+  </form>
+</div>
+<p>Auto Complete - Group</p>
