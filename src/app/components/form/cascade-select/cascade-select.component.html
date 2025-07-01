@@ -1,0 +1,74 @@
+<p>CascadeSelect</p>
+<div class="flex gap-3">
+  <p>Cascade Select</p>
+  <form [formGroup]="formGroup">
+    <p-floatLabel>
+      <p-cascadeSelect
+        formControlName="selectedCity"
+        [options]="countries"
+        optionLabel="cname"
+        optionGroupLabel="name"
+        [optionGroupChildren]="['states', 'cities']"
+        [style]="{ minWidth: '14rem' }"
+        placeholder="Select a City"
+        inputId="cs-city"
+      />
+      <label for="cs-city">City</label>
+    </p-floatLabel>
+
+    <form class="flex align-center gap-1 mt-7" [formGroup]="formGroup">
+      <p-checkbox formControlName="city" value="New York" inputId="ny" />
+      <label for="ny">New York</label>
+    </form>
+  </form>
+</div>
+
+<p>Dropdown</p>
+<div class="flex gap-3 mt-4">
+  <p>DropDown Floating</p>
+  <p-floatLabel>
+    <p-dropdown
+      [options]="cities"
+      [(ngModel)]="selectedCity"
+      optionLabel="name"
+      inputId="float-label"
+    />
+    <label for="float-label">Select a City</label>
+  </p-floatLabel>
+</div>
+<div class="flex gap-3 mt-4">
+  <p>DropDown Search</p>
+  <p-dropdown
+    [options]="countries2"
+    [(ngModel)]="selectedCountry"
+    optionLabel="name"
+    [filter]="true"
+    filterBy="name"
+    [showClear]="true"
+    placeholder="Select a Country"
+  >
+    <ng-template pTemplate="selectedItem" let-selectedOption>
+      <div class="flex align-items-center gap-2">
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+          [class]="
+            'flag flag-' +
+            (selectedOption?.code ? selectedOption.code.toLowerCase() : '')
+          "
+          style="width: 18px"
+        />
+        <div>{{ selectedOption.name }}</div>
+      </div>
+    </ng-template>
+    <ng-template let-country pTemplate="item">
+      <div class="flex align-items-center gap-2">
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+          [class]="'flag flag-' + country.code.toLowerCase()"
+          style="width: 18px"
+        />
+        <div>{{ country.name }}</div>
+      </div>
+    </ng-template>
+  </p-dropdown>
+</div>

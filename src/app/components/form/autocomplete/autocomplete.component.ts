@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FilterService, SelectItemGroup } from 'primeng/api';
 import { AutoCompleteModule } from 'primeng/autocomplete';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 interface AutoCompleteCompleteEvent {
   originalEvent: Event;
@@ -10,7 +12,7 @@ interface AutoCompleteCompleteEvent {
 @Component({
   selector: 'app-autocomplete',
   standalone: true,
-  imports: [AutoCompleteModule, ReactiveFormsModule],
+  imports: [AutoCompleteModule, ReactiveFormsModule, FormsModule, FloatLabelModule],
   templateUrl: './autocomplete.component.html',
   styleUrl: './autocomplete.component.css'
 })
@@ -259,16 +261,24 @@ export class AutocompleteComponent {
     { name: 'Zambia', code: 'ZM' },
     { name: 'Zimbabwe', code: 'ZW' }
   ];
-
   formGroup!: FormGroup;
-
   filteredCountries: any[] = [];
 
-  ngDoCheck(): void {
-    //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
-    //Add 'implements DoCheck' to the class.
-    // console.log(this.formGroup.value);
-  }
+  //Group
+  selectedCity: any;
+  filteredGroups: any[] = [];
+  groupedCities: SelectItemGroup[] | undefined;
+
+  //Multiple
+  selectedItems: any[] = [];
+  items: any[] = [];
+
+  constructor(private filterService: FilterService) { }
+
+  // ngDoCheck(): void {
+
+  //   console.log(this.filteredGroups);
+  // }
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -276,13 +286,43 @@ export class AutocompleteComponent {
     this.formGroup = new FormGroup({
       selectedCountry: new FormControl<object | null>(null)
     });
+
+    //grouped cities
+    this.groupedCities = [
+      {
+        label: 'Germany', value: 'de',
+        items: [
+          { label: 'Berlin', value: 'Berlin' },
+          { label: 'Frankfurt', value: 'Frankfurt' },
+          { label: 'Hamburg', value: 'Hamburg' },
+          { label: 'Munich', value: 'Munich' }
+        ]
+      },
+      {
+        label: 'USA', value: 'us',
+        items: [
+          { label: 'Chicago', value: 'Chicago' },
+          { label: 'Los Angeles', value: 'Los Angeles' },
+          { label: 'New York', value: 'New York' },
+          { label: 'San Francisco', value: 'San Francisco' }
+        ]
+      },
+      {
+        label: 'Japan', value: 'jp',
+        items: [
+          { label: 'Kyoto', value: 'Kyoto' },
+          { label: 'Osaka', value: 'Osaka' },
+          { label: 'Tokyo', value: 'Tokyo' },
+          { label: 'Yokohama', value: 'Yokohama' }
+        ]
+      }
+    ];
   }
 
   filterCountry(event: AutoCompleteCompleteEvent) {
     let filtered: any[] = [];
     let query = event.query;
 
-    console.log(event)
 
     for (let i = 0; i < (this.countries as any[]).length; i++) {
       let country = (this.countries as any[])[i];
@@ -293,4 +333,31 @@ export class AutocompleteComponent {
 
     this.filteredCountries = filtered;
   }
+
+  //group
+  filterGroupedCity(event: AutoCompleteCompleteEvent) {
+    let query = event.query;
+    let filteredGroups = [];
+
+    for (let optgroup of this.groupedCities!) {
+      let filteredSubOptions = this.filterService.filter(optgroup.items, ['label'], query, "contains");
+      if (filteredSubOptions && filteredSubOptions.length) {
+        filteredGroups.push({
+          label: optgroup.label,
+          value: optgroup.value,
+          items: filteredSubOptions
+        });
+      }
+    }
+
+    this.filteredGroups = filteredGroups;
+  }
+
+  //Multiple
+  search(event: AutoCompleteCompleteEvent) {
+    this.items = [...Array(10).keys()].map((item) => event.query + '-' + item);
+  }
+
+
+
 }

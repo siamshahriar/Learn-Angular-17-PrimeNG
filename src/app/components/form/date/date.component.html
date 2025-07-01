@@ -1,0 +1,49 @@
+<p class="text-cyan-500 font-semibold text-2xl">Calendar</p>
+<div class="flex gap-4 items-center">
+  <p>Basic</p>
+  <p-calendar [(ngModel)]="date" [showIcon]="true" inputId="buttondisplay" />
+  <br />
+</div>
+<div class="flex gap-4 items-center mt-3">
+  <label for="icondisplay" class="font-bold block"> Default Icon </label>
+  <p-calendar
+    [(ngModel)]="date"
+    [iconDisplay]="'input'"
+    [showIcon]="true"
+    inputId="icondisplay"
+    [showTime]="true"
+  />
+</div>
+
+<div class="flex gap-4 items-center mt-3">
+  <p>Multiple Dates</p>
+  <p-calendar
+    [(ngModel)]="dates"
+    selectionMode="multiple"
+    [readonlyInput]="true"
+  />
+</div>
+
+<div class="flex gap-4 items-center mt-3">
+  <p>Date Range</p>
+  <p-calendar
+    [(ngModel)]="dates"
+    selectionMode="range"
+    [readonlyInput]="true"
+    [showButtonBar]="true"
+  />
+</div>
+<div class="flex gap-4 items-center mt-3">
+  <p>Month Picker</p>
+  <p-floatLabel>
+    <p-calendar
+      [(ngModel)]="date"
+      view="month"
+      dateFormat="mm/yy"
+      [readonlyInput]="true"
+      inputId="birth_date"
+      selectionMode="range"
+    />
+    <label for="birth_date">Birth Date</label>
+  </p-floatLabel>
+</div>

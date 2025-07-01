@@ -1,13 +1,56 @@
-<div class="flex gap-4">
-  <p class="">Auto Complete - Reactive Form</p>
+<p class="">Auto Complete</p>
+<div class="flex gap-4 mt-5">
+  <p>Reactive Form</p>
   <form [formGroup]="formGroup">
-    <p-autoComplete
-      formControlName="selectedCountry"
-      [suggestions]="filteredCountries"
-      (completeMethod)="filterCountry($event)"
-      optionLabel="name"
-      [dropdown]="true"
-    />
+    <p-floatLabel>
+      <p-autoComplete
+        formControlName="selectedCountry"
+        [suggestions]="filteredCountries"
+        (completeMethod)="filterCountry($event)"
+        optionLabel="name"
+        [dropdown]="true"
+        [virtualScroll]="true"
+        [virtualScrollItemSize]="40"
+        inputId="float-label"
+        [showClear]="true"
+      />
+      <label for="float-label">Float Label</label>
+    </p-floatLabel>
   </form>
+  <p>Used: virtualScroll, dropdown, FloatLabel, showClear</p>
 </div>
-<p>Auto Complete - Group</p>
+<div class="flex gap-4">
+  <p>Group</p>
+  <p-autoComplete
+    [(ngModel)]="selectedCity"
+    [group]="true"
+    [suggestions]="filteredGroups"
+    (completeMethod)="filterGroupedCity($event)"
+    placeholder="Hint: type 'a'"
+  >
+    <ng-template let-group pTemplate="group">
+      <div class="flex items-center">
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+          [class]="'mr-2 flag flag-' + group.value"
+          style="width: 20px"
+        />
+        <span>{{ group.label }}</span>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+</div>
+<div class="flex gap-4">
+  <p>Multiple</p>
+  <span class="p-fluid">
+    <p-autoComplete
+      [(ngModel)]="selectedItems"
+      [suggestions]="items"
+      (completeMethod)="search($event)"
+      [multiple]="true"
+    />
+  </span>
+</div>
+<!-- <div class="flex gap">
+  <p>Auto Complete - Multiple</p>
+</div> -->
