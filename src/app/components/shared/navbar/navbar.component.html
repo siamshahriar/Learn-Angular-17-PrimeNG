@@ -1,42 +1,43 @@
 <!-- Navbar -->
-<nav class="bg-gray-800 shadow-lg sticky top-0 z-50">
-  <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+<nav class="navbarcls shadow-2 sticky top-0 z-5">
+  <div
+    class="p-3 flex justify-content-between align-items-center"
+    style="max-width: 1200px; margin: 0 auto"
+  >
     <!-- Logo -->
-    <a routerLink="/" class="text-white no-underline text-2xl font-bold"
-      >Learn PrimeNG</a
-    >
+    <a routerLink="/" class="text-2xl font-bold no-underline">Learn PrimeNG</a>
 
     <!-- Navbar Links -->
-    <div class="flex space-x-4">
+    <div class="flex gap-3">
       <a
         routerLink="/"
-        routerLinkActive="bg-gray-900 text-white"
+        routerLinkActive="selected"
         [routerLinkActiveOptions]="{ exact: true }"
-        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        class="text-gray-300 no-underline hoverBg hover:text-white px-3 py-2 border-round transition-colors transition-duration-300"
         >Form</a
       >
       <a
         routerLink="/button"
-        routerLinkActive="bg-gray-900 text-white"
-        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
-        >Button</a
+        routerLinkActive=" selected"
+        class="text-gray-300 no-underline hoverBg hover:text-white px-3 py-2 border-round transition-colors transition-duration-300"
+        >Button & Data</a
       >
       <a
-        routerLink="/data"
-        routerLinkActive="bg-gray-900 text-white"
-        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
-        >Data</a
+        routerLink="/paneloverlay"
+        routerLinkActive="selected"
+        class="text-gray-300 no-underline hoverBg hover:text-white px-3 py-2 border-round transition-colors transition-duration-300"
+        >Panel & Overlay</a
       >
       <a
-        routerLink="/panel"
-        routerLinkActive="bg-gray-900 text-white"
-        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
-        >Panel</a
+        routerLink="/menu"
+        routerLinkActive="selected"
+        class="text-gray-300 no-underline hoverBg hover:text-white px-3 py-2 border-round transition-colors transition-duration-300"
+        >Menu</a
       >
       <a
         routerLink="/overlay"
-        routerLinkActive="bg-gray-900 text-white"
-        class="text-gray-300 no-underline hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md transition duration-300"
+        routerLinkActive="selected"
+        class="text-gray-300 no-underline hoverBg hover:text-white px-3 py-2 border-round transition-colors transition-duration-300"
         >Overlay</a
       >
     </div>

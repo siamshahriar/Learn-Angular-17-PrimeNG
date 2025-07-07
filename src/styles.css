@@ -11,8 +11,12 @@ body {
 } */
 
 /* @tailwind base; */
-@tailwind components;
-@tailwind utilities;
+
+@import "../node_modules/quill/dist/quill.core.css";
+@import "../node_modules/quill/dist/quill.snow.css";
+
+/* @tailwind components;
+@tailwind utilities; */
 
 html,
 body {

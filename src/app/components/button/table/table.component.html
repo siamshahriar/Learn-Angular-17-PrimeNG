@@ -1,0 +1,66 @@
+<p>table</p>
+<div class="card">
+  <p-table
+    #dt
+    [value]="customers"
+    [scrollable]="true"
+    scrollHeight="400px"
+    [paginator]="true"
+    [rows]="5"
+    [rowsPerPageOptions]="[5, 10, 20]"
+    [exportHeader]="'customExportHeader'"
+  >
+    <ng-template pTemplate="caption">
+      <div style="text-align: left">
+        <p-button
+          icon="pi pi-external-link"
+          label="Export"
+          (onClick)="dt.exportCSV()"
+        />
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="id" style="min-width: 100px">
+          Id <p-sortIcon field="id" />
+        </th>
+        <th pSortableColumn="name" style="min-width: 200px">
+          Name <p-sortIcon field="name" />
+        </th>
+        <th style="min-width: 200px">Country</th>
+        <th style="min-width: 200px">Date</th>
+        <th style="min-width: 200px">Balance</th>
+        <th style="min-width: 200px">Company</th>
+        <th style="min-width: 200px">Status</th>
+        <th style="min-width: 200px">Activity</th>
+        <th style="min-width: 200px">Representative</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.country.name }}</td>
+        <td>{{ customer.date }}</td>
+        <td>{{ formatCurrency(customer.balance) }}</td>
+        <td>{{ customer.company }}</td>
+        <td>{{ customer.status }}</td>
+        <td>{{ customer.activity }}</td>
+        <td>{{ customer.representative.name }}</td>
+      </tr>
+    </ng-template>
+    <!-- <ng-template pTemplate="footer">
+      <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Country</td>
+        <td>Date</td>
+        <td>Balance</td>
+        <td>Company</td>
+        <td>Status</td>
+        <td>Activity</td>
+        <td>Representative</td>
+      </tr>
+    </ng-template> -->
+  </p-table>
+</div>

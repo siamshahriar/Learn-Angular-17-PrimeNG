@@ -1,0 +1,257 @@
+<p>overlay Start</p>
+<p>Confirm Dialogue</p>
+<div class="card flex justify-content-center gap-2">
+  <p-toast />
+  <p-confirmDialog key="confirmDialog" />
+  <p-button (onClick)="confirm1($event)" label="Save" [outlined]="true" />
+  <p-button
+    (onClick)="confirm2($event)"
+    label="Delete"
+    severity="danger"
+    [outlined]="true"
+  />
+</div>
+<div class="card flex flex-wrap flex-column align-items-center gap-2">
+  <p-toast />
+  <p-confirmDialog
+    key="positionDialog"
+    [position]="position"
+    rejectButtonStyleClass="p-button-outlined"
+  />
+
+  <div class="flex flex-wrap justify-content-center gap-2">
+    <p-button
+      (click)="confirmPosition('left')"
+      icon="pi pi-arrow-right"
+      label="Left"
+      severity="secondary"
+    />
+    <p-button
+      (click)="confirmPosition('right')"
+      icon="pi pi-arrow-left"
+      label="Right"
+      severity="secondary"
+    />
+  </div>
+  <div class="flex flex-wrap justify-content-center gap-2">
+    <p-button
+      (click)="confirmPosition('top-left')"
+      icon="pi pi-arrow-down"
+      label="TopLeft"
+      severity="secondary"
+    />
+    <p-button
+      (click)="confirmPosition('top')"
+      icon="pi pi-arrow-down"
+      label="Top"
+      severity="secondary"
+    />
+    <p-button
+      (click)="confirmPosition('top-right')"
+      icon="pi pi-arrow-down"
+      label="TopRight"
+      severity="secondary"
+    />
+  </div>
+  <div class="flex flex-wrap justify-content-center gap-2">
+    <p-button
+      (click)="confirmPosition('bottom-left')"
+      icon="pi pi-arrow-up"
+      label="BottomLeft"
+      severity="secondary"
+    />
+    <p-button
+      (click)="confirmPosition('bottom')"
+      icon="pi pi-arrow-up"
+      label="Bottom"
+      severity="secondary"
+    />
+    <p-button
+      (click)="confirmPosition('bottom-right')"
+      icon="pi pi-arrow-up"
+      label="BottomRight"
+      severity="secondary"
+    />
+  </div>
+</div>
+
+<p>Confirm Popup</p>
+<div class="card flex justify-content-center gap-2">
+  <p-toast />
+  <p-confirmPopup key="confirmPopup" />
+  <p-button (onClick)="confirm3($event)" label="Save" [outlined]="true" />
+  <p-button
+    (onClick)="confirm4($event)"
+    label="Delete"
+    severity="danger"
+    [outlined]="true"
+  />
+</div>
+
+<p>Dialog</p>
+<p-button (onClick)="showDialog()" label="Show" />
+<p-dialog
+  header="Edit Profile"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '25rem' }"
+>
+  <span class="p-text-secondary block mb-5">Update your information.</span>
+  <div class="flex align-items-center gap-3 mb-3">
+    <label for="username" class="font-semibold w-6rem">Username</label>
+    <input pInputText id="username" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex align-items-center gap-3 mb-5">
+    <label for="email" class="font-semibold w-6rem">Email</label>
+    <input pInputText id="email" class="flex-auto" autocomplete="off" />
+  </div>
+  <div class="flex justify-content-end gap-2">
+    <p-button label="Cancel" severity="secondary" (onClick)="visible = false" />
+    <p-button label="Save" (onClick)="visible = false" />
+  </div>
+</p-dialog>
+
+<p>Dynmaic Dialog</p>
+<div class="card flex flex-column align-items-center gap-3">
+  <p-toast />
+  <p-button
+    (onClick)="op.toggle($event)"
+    icon="pi pi-search"
+    [label]="selectedProduct ? selectedProduct.name : 'Select a Product'"
+  />
+  <div *ngIf="selectedProduct" class="p-5 surface-card shadow-2 border-round">
+    <div class="relative">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+          selectedProduct.image
+        }}"
+        [alt]="selectedProduct.name"
+      />
+    </div>
+    <div class="flex align-items-center justify-content-between mt-3 mb-2">
+      <span class="text-900 font-medium text-xl">
+        {{ selectedProduct.name }}
+      </span>
+      <span class="text-900 text-xl ml-3">
+        {{ "$" + selectedProduct.price }}
+      </span>
+    </div>
+    <span class="text-600">
+      {{ selectedProduct.category }}
+    </span>
+  </div>
+  <p-overlayPanel #op [style]="{ width: '450px' }" [showCloseIcon]="true">
+    <ng-template pTemplate="content">
+      <p-table
+        [value]="products"
+        selectionMode="single"
+        [(selection)]="selectedProduct"
+        (onRowSelect)="onRowSelect($event, op)"
+        [paginator]="true"
+        [rows]="5"
+        responsiveLayout="scroll"
+      >
+        <ng-template pTemplate="header">
+          <tr>
+            <th pSortableColumn="name">Name <p-sortIcon field="name" /></th>
+            <th>Image</th>
+            <th pSortableColumn="price">Price <p-sortIcon field="price" /></th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-product>
+          <tr [pSelectableRow]="rowData">
+            <td>
+              {{ product.name }}
+            </td>
+            <td>
+              <img
+                src="https://primefaces.org/cdn/primeng/images/demo/product/{{
+                  product.image
+                }}"
+                [alt]="product.image"
+                class="w-5rem shadow-2"
+              />
+            </td>
+            <td>{{ product.price }}</td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </ng-template>
+  </p-overlayPanel>
+</div>
+
+<p>SideBar</p>
+<div class="card flex flex-wrap justify-content-center gap-2">
+  <p-sidebar [(visible)]="sidebarVisible1" position="left">
+    <h3>Left Sidebar</h3>
+  </p-sidebar>
+
+  <p-sidebar [(visible)]="sidebarVisible2" position="right">
+    <h3>Right Sidebar</h3>
+  </p-sidebar>
+
+  <p-sidebar [(visible)]="sidebarVisible3" position="top">
+    <h3>Top Sidebar</h3>
+  </p-sidebar>
+
+  <p-sidebar [(visible)]="sidebarVisible4" position="bottom">
+    <h3>Bottom Sidebar</h3>
+  </p-sidebar>
+
+  <p-button
+    type="button"
+    class="mr-2"
+    (onClick)="sidebarVisible1 = true"
+    icon="pi pi-arrow-right"
+  />
+  <p-button
+    type="button"
+    class="mr-2"
+    (onClick)="sidebarVisible2 = true"
+    icon="pi pi-arrow-left"
+  />
+  <p-button
+    type="button"
+    class="mr-2"
+    (onClick)="sidebarVisible3 = true"
+    icon="pi pi-arrow-down"
+  />
+  <p-button
+    type="button"
+    class="mr-2"
+    (onClick)="sidebarVisible4 = true"
+    icon="pi pi-arrow-up"
+  />
+</div>
+
+<p>Tooltip</p>
+<div class="card flex justify-content-center">
+  <input
+    type="text"
+    pInputText
+    pTooltip="Enter your username"
+    tooltipEvent="focus"
+    placeholder="focus to display tooltip"
+  />
+</div>
+
+<p>File Upload</p>
+<div class="card flex justify-content-center">
+  <p-toast />
+  <p-fileUpload
+    name="demo[]"
+    url="https://www.primefaces.org/cdn/api/upload.php"
+    (onUpload)="onUpload($event)"
+    [multiple]="true"
+    accept="image/*"
+    maxFileSize="1000000"
+  >
+    <ng-template pTemplate="content">
+      <ul *ngIf="uploadedFiles.length">
+        <li *ngFor="let file of uploadedFiles">
+          {{ file.name }} - {{ file.size }} bytes
+        </li>
+      </ul>
+    </ng-template>
+  </p-fileUpload>
+</div>

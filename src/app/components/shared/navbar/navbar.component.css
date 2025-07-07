@@ -1,0 +1,12 @@
+.navbarcls {
+  background-color: #74c0fa;
+}
+
+.hoverBg:hover {
+  background-color: #b6dfff;
+}
+
+.selected {
+  color: #ffffff;
+  background-color: #c9e7ff;
+}

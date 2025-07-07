@@ -1,0 +1,131 @@
+<p>Editor</p>
+<div class="w-[620px]">
+  <p-editor [(ngModel)]="text" [style]="{ height: '320px' }" />
+</div>
+<p>InputMask</p>
+<p-inputMask mask="99-999999" [(ngModel)]="value" placeholder="99-999999" />
+<p>Input Switch</p>
+<p-inputSwitch [(ngModel)]="checked" />
+<p>Float InputText</p>
+<div class="mt-7">
+  <p-floatLabel>
+    <input pInputText id="username" [(ngModel)]="value" />
+    <label for="username">Username</label>
+  </p-floatLabel>
+</div>
+
+<p>Float InputTextArea Reactive Form</p>
+<div class="mt-7">
+  <form [formGroup]="formGroup">
+    <p-floatLabel>
+      <textarea
+        rows="5"
+        cols="30"
+        pInputTextarea
+        formControlName="text"
+        id="float-input"
+      ></textarea>
+      <label for="float-input">Summary</label>
+    </p-floatLabel>
+  </form>
+</div>
+
+<p>Input OTP</p>
+<div class="mt-7">
+  <p-inputOtp [(ngModel)]="value" />
+</div>
+
+<p>Knob</p>
+<div class="mt-7">
+  <p-knob [(ngModel)]="value" [step]="1" [strokeWidth]="5" [size]="100" />
+</div>
+
+<p>ListBox - Reactive Forms - Multiple Select</p>
+<div class="mt-7">
+  <form [formGroup]="formGroup2">
+    <p-listbox
+      [options]="cities"
+      formControlName="selectedCity"
+      [multiple]="true"
+      optionLabel="name"
+      [style]="{ width: '15rem' }"
+      [listStyle]="{ 'max-height': '220px' }"
+    />
+  </form>
+</div>
+
+<p>MultiSelect</p>
+<div class="mt-7">
+  <form [formGroup]="formGroup3">
+    <p-multiSelect
+      [options]="cities"
+      formControlName="selectedCities"
+      optionLabel="name"
+      placeholder="Select Cities"
+    />
+  </form>
+</div>
+
+<p>Radio Button</p>
+<div class="mt-7">
+  <form class="flex flex-column gap-3" [formGroup]="formGroup4">
+    <div *ngFor="let category of categories" class="field-checkbox">
+      <p-radioButton
+        [inputId]="category.key"
+        [value]="category"
+        formControlName="selectedCategory"
+      />
+      <label [for]="category.key" class="ml-2">
+        {{ category.name }}
+      </label>
+    </div>
+  </form>
+</div>
+
+<p class="mt-7">Select Button Multiple</p>
+<div>
+  <p-selectButton
+    [options]="paymentOptions"
+    [(ngModel)]="value"
+    [multiple]="true"
+    optionLabel="name"
+    optionValue="value"
+  />
+</div>
+
+<p class="mt-7">Slider</p>
+<div>
+  <form [formGroup]="formGroup5">
+    <input
+      type="text"
+      pInputText
+      formControlName="value2"
+      value="{{ formGroup5.get('value2')?.value }}"
+      class="w-full mb-3"
+    />
+    <p-slider formControlName="value2" styleClass="w-14rem" />
+  </form>
+</div>
+
+<p class="mt-7">Tree Select</p>
+<div>
+  <form [formGroup]="formGroup6">
+    <p-treeSelect
+      class="md:w-20rem w-full"
+      containerStyleClass="w-full"
+      formControlName="selectedNodes"
+      [options]="nodes"
+      placeholder="Select Item"
+    />
+  </form>
+</div>
+
+<p>Toggle Button</p>
+<div>
+  <form [formGroup]="formGroup7">
+        <p-toggleButton 
+            formControlName="checked" 
+            onLabel="On" 
+            offLabel="Off" />
+    </form>
+</div>

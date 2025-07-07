@@ -1,0 +1,36 @@
+<p-button label="Primary" size="small" />
+<p-button label="Submit" [disabled]="true" />
+<p-button icon="pi pi-check" />
+<p-button icon="pi pi-bookmark" severity="secondary" />
+<p-button icon="pi pi-search" severity="success" />
+
+<p>Split Button</p>
+<p-toast />
+<p-splitButton
+  label="Save"
+  (onClick)="save('info')"
+  [model]="items"
+  size="small"
+/>
+
+<p>Speed Dial</p>
+<div style="height: 200px; position: relative" class="speeddial-linear-demo">
+  <p-toast />
+  <p-speedDial [model]="items" direction="right" />
+  <p-speedDial
+    [model]="items"
+    direction="left"
+    [radius]="80"
+    type="semi-circle"
+  />
+</div>
+
+<app-data></app-data>
+
+<app-orderlist></app-orderlist>
+
+<app-picklist></app-picklist>
+
+<app-table></app-table>
+
+<app-timeline></app-timeline>

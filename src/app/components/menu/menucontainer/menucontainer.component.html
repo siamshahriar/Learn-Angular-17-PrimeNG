@@ -1,0 +1,69 @@
+<p>Breadcrumb</p>
+<p-breadcrumb class="max-w-full" [model]="items" [home]="home" />
+
+<p>Context Menu</p>
+<div class="card flex justify-content-center">
+  <img
+    #img
+    src="https://primefaces.org/cdn/primeng/images/demo/nature/nature2.jpg"
+    alt="Logo"
+    aria-haspopup="true"
+    class="max-w-full"
+  />
+  <p-contextMenu [target]="img" [model]="items2" />
+</div>
+
+<p>Dock</p>
+<div class="card">
+  <div class="flex flex-wrap gap-3 mb-5">
+    <p-radioButton
+      *ngFor="let option of positionOptions"
+      [name]="option.label"
+      [value]="option.value"
+      [label]="option.label"
+      [(ngModel)]="position"
+      [inputId]="option.label"
+    />
+  </div>
+  <div class="dock-window">
+    <p-dock [model]="items3" [position]="position">
+      <ng-template pTemplate="item" let-item>
+        <img [src]="item.icon" [alt]="item.label" width="100%" />
+      </ng-template>
+    </p-dock>
+  </div>
+</div>
+
+<p>Popup</p>
+<p-toast />
+<p-menu #menu [model]="items4" [popup]="true" />
+<p-button (onClick)="menu.toggle($event)" icon="pi pi-ellipsis-v" />
+
+<p>Menubar</p>
+<div class="card">
+  <p-menubar [model]="items5" />
+</div>
+
+<p>PanelMenu</p>
+<div class="card flex justify-content-center">
+  <p-panelMenu
+    [model]="items6"
+    [style]="{ width: '300px' }"
+    [multiple]="true"
+  />
+</div>
+
+<p>Steps</p>
+<div class="card">
+  <p-steps [model]="items7" [readonly]="true" />
+</div>
+
+<p>Tiered Menu</p>
+<div class="card flex justify-content-center">
+  <p-tieredMenu [model]="items8" />
+</div>
+
+<p>Chart</p>
+<div class="card">
+  <p-chart type="bar" [data]="data" [options]="options" />
+</div>

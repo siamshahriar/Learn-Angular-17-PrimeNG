@@ -33,7 +33,8 @@ export class CascadeSelectComponent {
 
   ngOnInit() {
     this.formGroup = new FormGroup({
-      selectedCity: new FormControl<object | null>(null)
+      selectedCity: new FormControl<object | null>(null),
+      city: new FormControl(null)
     });
 
     this.countries = [
