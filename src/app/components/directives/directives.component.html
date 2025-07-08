@@ -1,0 +1,166 @@
+<p>directives</p>
+<p>Defer</p>
+<div class="card">
+  <p style="margin-bottom: 70rem">
+    Content is not loaded yet, scroll down to initialize it.
+  </p>
+  <p-toast />
+  <div pDefer (onLoad)="onLoad()">
+    <ng-template>
+      <img
+        class="w-full md:w-30rem md:block md:mx-auto"
+        src="https://primefaces.org/cdn/primeng/images/demo/nature/nature1.jpg"
+        alt="Prime"
+      />
+    </ng-template>
+  </div>
+</div>
+
+<p>FocusTop</p>
+<div
+  pFocusTrap
+  class="card flex align-items-center justify-content-center flex-wrap gap-3"
+>
+  <div>
+    <h4>Input</h4>
+    <input id="input" type="text" size="30" pInputText />
+  </div>
+  <div>
+    <h4>Float Label</h4>
+    <span class="p-float-label">
+      <input id="float-input" type="text" size="30" pInputText />
+      <label for="float-input">Username</label>
+    </span>
+  </div>
+  <div>
+    <h4>Disabled Input</h4>
+    <input
+      id="disabled-input"
+      type="text"
+      size="30"
+      pInputText
+      [disabled]="true"
+    />
+  </div>
+  <div>
+    <h4>Input with tabindex -1</h4>
+    <input type="text" size="30" pInputText tabindex="-1" />
+  </div>
+  <div>
+    <h4>Button</h4>
+    <p-button icon="pi pi-check" label="Check" />
+  </div>
+  <div>
+    <h4>Dropdown</h4>
+    <p-dropdown
+      [options]="cities"
+      [(ngModel)]="selectedCity"
+      placeholder="Select a City"
+      optionLabel="name"
+      [showClear]="true"
+    />
+  </div>
+</div>
+
+<p>Toogle Class by Style Class</p>
+<div class="card flex flex-column align-items-center">
+  <p-button
+    label="Toggle p-disabled"
+    pStyleClass="@next"
+    toggleClass="p-disabled"
+  />
+  <input type="text" pInputText class="block mt-3" />
+</div>
+
+<p>Ripple Effect</p>
+<div class="card card-container flex justify-content-center align-items-center">
+  <div pRipple class="card styled-box-green shadow-2">Green</div>
+  <div pRipple class="card styled-box-orange shadow-2">Orange</div>
+  <div pRipple class="card styled-box-purple shadow-2">Purple</div>
+</div>
+
+<p>Auto Focus</p>
+<div class="card flex justify-content-center">
+  <input
+    type="text"
+    pInputText
+    pAutoFocus
+    [autofocus]="true"
+    placeholder="Automatically focused"
+  />
+</div>
+
+<p>Animate On Scroll</p>
+<div class="card flex flex-column align-items-center overflow-hidden">
+  <div class="flex flex-column align-items-center gap-2">
+    <span class="text-xl font-medium">Scroll Down</span>
+    <span
+      class="slidedown-icon h-2rem w-2rem bg-primary border-circle inline-flex align-items-center justify-content-center"
+    >
+      <i class="pi pi-arrow-down"></i>
+    </span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="fadein"
+    leaveClass="fadeout"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000"
+  >
+    <span class="text-3xl font-bold">fade-in</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="fadeinleft"
+    leaveClass="fadeoutleft"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000 animation-ease-in-out"
+  >
+    <span class="text-3xl font-bold">fade-left</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="fadeinright"
+    leaveClass="fadeoutright"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000 animation-ease-in-out"
+  >
+    <span class="text-3xl font-bold">fade-right</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="zoomin"
+    leaveClass="fadeout"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000"
+  >
+    <span class="text-3xl font-bold">zoom</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="flipleft"
+    leaveClass="fadeout"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000 animation-ease-in-out"
+  >
+    <span class="text-3xl font-bold">flip-left</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="flipup"
+    leaveClass="fadeout"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000 animation-ease-in-out"
+  >
+    <span class="text-3xl font-bold">flip-y</span>
+  </div>
+  <div class="h-30rem"></div>
+  <div
+    pAnimateOnScroll
+    enterClass="scalein"
+    leaveClass="fadeout"
+    class="flex box shadow-4 justify-content-center align-items-center h-10rem w-10rem sm:h-15rem sm:w-15rem border-round animation-duration-1000 animation-ease-in-out"
+  >
+    <span class="text-3xl font-bold">scalein</span>
+  </div>
+</div>

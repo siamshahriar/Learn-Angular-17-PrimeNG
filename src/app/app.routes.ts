@@ -3,6 +3,8 @@ import { FormContainerComponent } from './components/form/form-container/form-co
 import { ButtonDataComponent } from './components/button/button-data/button-data.component';
 import { PaneloverlaycontainerComponent } from './components/paneloverlay/paneloverlaycontainer/paneloverlaycontainer.component';
 import { MenucontainerComponent } from './components/menu/menucontainer/menucontainer.component';
+import { MiscComponent } from './components/misc/misc/misc.component';
+import { DirectivesComponent } from './components/directives/directives.component';
 
 export const routes: Routes = [
     {
@@ -20,5 +22,14 @@ export const routes: Routes = [
     {
         path: "menu",
         component: MenucontainerComponent
+    },
+    {
+        path: "misc",
+        component: MiscComponent
+    },
+    {
+        path: "directives",
+        component: DirectivesComponent
     }
+
 ];

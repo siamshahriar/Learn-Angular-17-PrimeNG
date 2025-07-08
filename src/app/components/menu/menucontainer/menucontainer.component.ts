@@ -12,13 +12,15 @@ import { ToastModule } from 'primeng/toast';
 import { MenubarModule } from 'primeng/menubar';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { StepsModule } from 'primeng/steps';
-
+import { ChartModule } from 'primeng/chart';
 import { TieredMenuModule } from 'primeng/tieredmenu';
+import { MessagesModule } from 'primeng/messages';
+import { MediaComponent } from '../media/media.component';
 
 @Component({
   selector: 'app-menucontainer',
   standalone: true,
-  imports: [BreadcrumbModule, ContextMenuModule, DockModule, RadioButtonModule, CommonModule, FormsModule, MenuModule, ButtonModule, ToastModule, MenubarModule, PanelMenuModule, StepsModule, TieredMenuModule],
+  imports: [BreadcrumbModule, ContextMenuModule, DockModule, RadioButtonModule, CommonModule, FormsModule, MenuModule, ButtonModule, ToastModule, MenubarModule, PanelMenuModule, StepsModule, TieredMenuModule, ChartModule, MessagesModule, MediaComponent],
   templateUrl: './menucontainer.component.html',
   styleUrl: './menucontainer.component.css',
   providers: [MessageService],
@@ -45,6 +47,26 @@ export class MenucontainerComponent {
     { label: 'Bottom', value: 'bottom' }
   ];
 
+  data: any;
+
+  options: any;
+
+  constructor(private messageService: MessageService) { }
+
+  addSingle() {
+    this.messageService.add({ severity: 'success', summary: 'Service Message', detail: 'Via MessageService' });
+  }
+
+  addMultiple() {
+    this.messageService.addAll([
+      { severity: 'success', summary: 'MISLBD', detail: 'Via MessageService' },
+      { severity: 'info', summary: 'Info Message', detail: 'Via MessageService' }
+    ]);
+  }
+
+  clear() {
+    this.messageService.clear();
+  }
 
   ngOnInit() {
     this.items = [
@@ -311,5 +333,64 @@ export class MenucontainerComponent {
         ]
       }
     ]
+
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+    const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+    this.data = {
+      labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+      datasets: [
+        {
+          label: 'My First dataset',
+          backgroundColor: documentStyle.getPropertyValue('--blue-500'),
+          borderColor: documentStyle.getPropertyValue('--blue-500'),
+          data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+          label: 'My Second dataset',
+          backgroundColor: documentStyle.getPropertyValue('--pink-500'),
+          borderColor: documentStyle.getPropertyValue('--pink-500'),
+          data: [28, 48, 40, 19, 86, 27, 90]
+        }
+      ]
+    };
+
+    this.options = {
+      maintainAspectRatio: false,
+      aspectRatio: 0.8,
+      plugins: {
+        legend: {
+          labels: {
+            color: textColor
+          }
+        }
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: textColorSecondary,
+            font: {
+              weight: 500
+            }
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        },
+        y: {
+          ticks: {
+            color: textColorSecondary
+          },
+          grid: {
+            color: surfaceBorder,
+            drawBorder: false
+          }
+        }
+
+      }
+    };
   }
 }

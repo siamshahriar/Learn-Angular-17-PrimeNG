@@ -1,0 +1,155 @@
+<div>
+  <p>Badge</p>
+
+  <div class="card flex justify-content-center">
+    <p-avatar
+      image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+      pBadge
+      value="4"
+      severity="danger"
+    />
+  </div>
+
+  <div class="card flex flex-wrap justify-content-center gap-2">
+    <p-button label="Emails" badge="8" />
+    <p-button
+      label="Messages"
+      icon="pi pi-users"
+      severity="secondary"
+      badge="8"
+      badgeClass="p-badge-info"
+    />
+  </div>
+
+  <p>Block UI</p>
+  <div class="card">
+    <p-button label="Block" (onClick)="blockedPanel = true" />
+    <p-button label="Unblock" (onClick)="blockedPanel = false" />
+    <p-blockUI [target]="pnl" [blocked]="blockedPanel">
+      <i class="pi pi-lock" style="font-size: 3rem"></i>
+    </p-blockUI>
+    <p-panel #pnl header="Header" styleClass="mt-4">
+      <p class="m-0">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </p-panel>
+  </div>
+
+  <p>chip</p>
+  <div class="card flex align-items-center gap-2 flex-wrap">
+    <p-chip label="Apple" icon="pi pi-apple" />
+    <p-chip label="Facebook" icon="pi pi-facebook" />
+    <p-chip label="Google" icon="pi pi-google" />
+    <p-chip label="Microsoft" icon="pi pi-microsoft" [removable]="true" />
+  </div>
+
+  <p>Inplace</p>
+  <div class="card">
+    <p-inplace>
+      <ng-template pTemplate="display">
+        <div class="inline-flex align-items-center">
+          <span class="pi pi-image" style="vertical-align: middle"></span>
+          <span class="ml-2">View Picture</span>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+        <img
+          src="https://primefaces.org/cdn/primeng/images/demo/galleria/galleria5.jpg"
+          alt="Nature"
+        />
+      </ng-template>
+    </p-inplace>
+  </div>
+
+  <p>MeterGroup</p>
+  <div class="card">
+    <p-meterGroup [value]="value" />
+  </div>
+
+  <p-scrollTop
+    styleClass="custom-scrolltop"
+    [threshold]="100"
+    icon="pi pi-arrow-up"
+  />
+
+  <p>Skeleton</p>
+  <div class="card">
+    <div class="border-round border-1 surface-border p-4 surface-card">
+      <ul class="m-0 p-0 list-none">
+        <li class="mb-3">
+          <div class="flex">
+            <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+            <div style="flex: 1">
+              <p-skeleton width="100%" styleClass="mb-2" />
+              <p-skeleton width="75%" />
+            </div>
+          </div>
+        </li>
+        <li class="mb-3">
+          <div class="flex">
+            <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+            <div style="flex: 1">
+              <p-skeleton width="100%" styleClass="mb-2" />
+              <p-skeleton width="75%" />
+            </div>
+          </div>
+        </li>
+        <li class="mb-3">
+          <div class="flex">
+            <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+            <div style="flex: 1">
+              <p-skeleton width="100%" styleClass="mb-2" />
+              <p-skeleton width="75%" />
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="flex">
+            <p-skeleton shape="circle" size="4rem" styleClass="mr-2" />
+            <div style="flex: 1">
+              <p-skeleton width="100%" styleClass="mb-2" />
+              <p-skeleton width="75%" />
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <p>Progress Bar</p>
+  <div class="card">
+    <p-progressBar [value]="50" />
+  </div>
+
+  <p>Spinner</p>
+  <div class="card flex justify-content-center">
+    <p-progressSpinner ariaLabel="loading" />
+  </div>
+
+  <p>Tag</p>
+  <div class="card flex justify-content-center gap-2">
+    <p-tag value="Primary" />
+    <p-tag severity="success" value="Success" />
+    <p-tag severity="secondary" value="Secondary" />
+    <p-tag severity="info" value="Info" />
+    <p-tag severity="warning" value="Warning" />
+    <p-tag severity="danger" value="Danger" />
+    <p-tag severity="contrast" value="Contrast" />
+  </div>
+
+  <p>Terminal</p>
+  <div class="card">
+    <p>
+      Enter "<strong>date</strong>" to display the current date, "<strong
+        >greet &#123;0&#125;</strong
+      >" for a message and "<strong>random</strong>" to get a random number.
+    </p>
+    <p-terminal welcomeMessage="Welcome to PrimeNG" prompt="primeng $" />
+  </div>
+</div>
